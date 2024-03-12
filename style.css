@@ -1,17 +1,15 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
 }
 
-
 body {
     background-image: url("images/background-binnen-bruin.jpeg");
 }
 
-
-.progressbar{
+.progressbar {
     background-color: lightgray;
     padding: 5px;
     margin: 10px;
@@ -26,7 +24,7 @@ body {
     height: 2.4em;
 }
 
-h1{
+h1 {
     border: 20px solid lightblue;
     background-color: lightblue;
     max-height: 40vh;
