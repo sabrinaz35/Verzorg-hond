@@ -8,7 +8,7 @@ let h1element = document.querySelector("h1");
 //Regelen van hoe de hond eruit ziet
 
 const hondjeStatus = 0
-let plaatjeHondArray = ["hond.jpeg", "hond-boos.jpg", "hond-met-tong.jpg", "hond-verbaasd.jpg", "hond-verdrietig-traan.jpg"]; //de plaatjes neerzetten in de javascript
+let plaatjeHondArray = ["hond1.PNG", "hond-boos.PNG", "hond-tong.PNG", "hond-verbaasd.PNG", "hond-verdrietig.PNG"]; //de plaatjes neerzetten in de javascript
 statushond = 0 //dit is het begin dus de eerste hond
 
 /*document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];*/ // Hier selecteer je de plaatjes dmv een statushond, die moet je terug laten komen om het plaatje te kunnen laten veranderen.
