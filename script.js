@@ -8,7 +8,7 @@ let h1element = document.querySelector("h1");
 //Regelen van hoe de hond eruit ziet
 
 const hondjeStatus = 0
-let plaatjeHondArray = ["hond1.PNG", "hond-boos.PNG", "hond-tong.PNG", "hond-verbaasd.PNG", "hond-verdrietig.PNG"]; //de plaatjes neerzetten in de javascript
+let plaatjeHondArray = ["hond1.jpeg", "hond-boos.jpeg", "hond-tong.jpeg", "hond-verbaasd.jpeg", "hond-verdrietig.jpeg"]; //de plaatjes neerzetten in de javascript
 statushond = 0 //dit is het begin dus de eerste hond
 
 /*document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];*/ // Hier selecteer je de plaatjes dmv een statushond, die moet je terug laten komen om het plaatje te kunnen laten veranderen.
@@ -23,15 +23,6 @@ function updatePlaatje(){ //functie om je plaatje aan te passen
 }
 */
 
-function etenGeven() {
-  statushond = statushond + 1 // door +1 een mee te geven veranderd het plaatje in de array is het 0,1,2,3,4 
-  updatePlaatje() //Deze toevoegen want dat is de functie waar je plaatje aan gekoppeld is 
-}
-
-hondenVoer.addEventListener ("click", etenGeven) //Activeren van een click aan de hondenvoer en daarmee veranderd het plaatje
-
-//Audio toevoegen aan het klikken van de buttons 
-//Kan je ook op een andere manier audio toevoegen? Anders moet ik dit 4 keer doen voor elke knop 1
 
 //De progressbar
 
@@ -133,30 +124,42 @@ function timer1 (){ //in deze functie gaat er steeds 1 vanaf gedurende de second
   joystatus.style.width = joy+ "%"
   sleep = sleep -1
   sleepingstatus.style.width = sleep + "%"
+  colorChangeBar()
 }
 
 function stopTimer(){ //om de timer te laten stoppen bij 1 
   clearInterval (timer1)
 }
 
-// het veranderen van kleur bij de progressiebar 
-
+// het veranderen van kleur bij de progressiebar + het veranderen van de emotie van de hond
 function colorChangeBar (){
-  if (honger,happy,joy,sleep <= 20){
+  console.log(honger);
+  if (honger <= 20 || happy <= 20 || joy <= 20 || sleep <= 20){
     hungerstatus.style.backgroundColor = 'red' //het aangeven van een andere kleur aan de balk zodra er iets anders gebeurd
-    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[1];
-  } else if (honger||happy||joy||sleep >= 85){
-   hungerstatus.style.backgroundColor = 'green'
-   document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];
-  } else if (honger||happy||joy||sleep == 5){
-    stopTimer()
-    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[2];
-  } else {
+    happystatus.style.backgroundColor = 'red' 
+    joystatus.style.backgroundColor = 'red' 
+    sleepingstatus.style.backgroundColor = 'red' 
+    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[4];
+    h1element.textContent = "Noem je dit verzorgen!"
+  } else if (honger <= 65 || happy <= 65 || joy <= 65 || sleep <= 65){
     hungerstatus.style.backgroundColor = 'orange'
-  }
+    happystatus.style.backgroundColor = 'orange'
+    joystatus.style.backgroundColor = 'orange'
+    sleepingstatus.style.backgroundColor = 'orange'
+    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[1];
+    h1element.textContent = "OH ik trek het zo niet meer!"
+  } else if (honger || happy || joy || sleep == 5){
+    stopTimer()
+    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];
+  } else { //Hij verandert nog niet terug naar groen... Als hij weer boven het getal komt.
+    hungerstatus.style.backgroundColor = 'green'
+    happystatus.style.backgroundColor = 'green'
+    joystatus.style.backgroundColor = 'green'
+    sleepingstatus.style.backgroundColor = 'green'
+    h1element.textContent = "Je bent zo lief!!"
+  } 
 }
 colorChangeBar()
-
 
 
 hand.addEventListener ("click", geefAai)
