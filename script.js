@@ -5,14 +5,10 @@ console.log("Dit is het spel Walking doggie");
 const dier = "Hond"
 let h1element = document.querySelector("h1");
 
-
-//Regelen van hoe de hond eruit ziet
-
+//Regelen van hoe de hond eruit ziet, dmv. array
 const hondjeStatus = 0
 let plaatjeHondArray = ["hond1.jpeg", "hond-boos.jpeg", "hond-tong.jpeg", "hond-verbaasd.jpeg", "hond-verdrietig.jpeg"]; //de plaatjes neerzetten in de javascript
 statushond = 0 //dit is het begin dus de eerste hond
-
-/*document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];*/ // Hier selecteer je de plaatjes dmv een statushond, die moet je terug laten komen om het plaatje te kunnen laten veranderen.
 
 //De buttons 
 const hondenVoer = document.querySelector(".hondenvoer");
@@ -112,7 +108,7 @@ function gooiBal() {
 //timer toevoegen aan de bar, zodat deze afloopt
 setInterval (timer1, 1000) //activeert de function timer, het getal is in milliseconden
 
-function timer1 (){ //in deze functie gaat er steeds 1 vanaf gedurende de seconde
+function timer1(){ //in deze functie gaat er steeds 1 vanaf gedurende de seconde
   honger = honger -1 
   hungerstatus.style.width = honger + "%"
   happy = happy -1
@@ -167,7 +163,4 @@ tennisbal.addEventListener ("click", gooiBal)
 
 //  let audioEten = new Audio ("sounds/eating-sound-effect-36186.mp3") //Het ophalen van de audio uit je documenten
 // audioEten.play()
- //Het aanspreken om het te laten doen, deze audio kan niet in dezelfde functie geplaatst worden.
-
-
-
+//Het aanspreken om het te laten doen, deze audio kan niet in dezelfde functie geplaatst worden.
