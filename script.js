@@ -1,4 +1,5 @@
 // De sounds die ik in dit document heb gebruikt komen van https://pixabay.com/ 
+//Emoji heb ik van https://emojipedia.org/nl/slaapsymbool 
 
 console.log("Dit is het spel Walking doggie");
 const dier = "Hond"
@@ -13,19 +14,14 @@ statushond = 0 //dit is het begin dus de eerste hond
 
 /*document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];*/ // Hier selecteer je de plaatjes dmv een statushond, die moet je terug laten komen om het plaatje te kunnen laten veranderen.
 
+//De buttons 
 const hondenVoer = document.querySelector(".hondenvoer");
 const hondenMand = document.querySelector(".hondenmand");
 const hand = document.querySelector(".hand");
 const tennisbal = document.querySelector(".tennisbal");
-/*
-function updatePlaatje(){ //functie om je plaatje aan te passen
-  document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0]; // verander in statushond om plaatjes te veranderen
-}
-*/
 
 
 //De progressbar
-
 let hungerstatus = document.querySelector(".hungerstatus"); //het toevoegen van mijn divs aan mijn javascript
 let joystatus = document.querySelector(".joystatus");
 let sleepingstatus = document.querySelector(".sleepingstatus");
@@ -36,6 +32,11 @@ let joy = 100
 let sleep = 100
 let happy = 100
 
+//Alle sounds op een rijtje
+let audioEat = new Audio ("sounds/eating-sound-effect-36186.mp3")
+let audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
+let audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
+let audioBall = new Audio ("sounds/bouncing-ball.mp3")
 
 function geefEten() { // maak een functie aan voor de hongerbalk
   if (honger == 100) {
@@ -53,7 +54,7 @@ function geefEten() { // maak een functie aan voor de hongerbalk
   happy = happy - 1
   happystatus.style.width = happy + "%"
  //Audio laten afspelen zodra er op de button geklikt word.
- let audioEat = new Audio ("sounds/eating-sound-effect-36186.mp3")
+  h1element.textContent = "Wist je dat dit mijn favoriete eten is 🍖🍖"
   audioEat.play ()
 }
 
@@ -70,8 +71,7 @@ function geefAai() {
   sleepingstatus.style.width = sleep + "%"
   happy= happy - 1
   happystatus.style.width = happy + "%"
-
-  let audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
+  h1element.textContent = "Ahh ik vind je zo lief als jij me aait ❤️❤️"
   audioAww.play ()
 }
 
@@ -88,8 +88,7 @@ function gaSlapen() {
   joystatus.style.width = joy + "%"
   happy = happy - 1
   happystatus.style.width = happy + "%"
-
-  let audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
+  h1element.textContent = "Het liefst slaap ik de hele dag  💤💤💤💤"
   audioSnurk.play ()
 }
 
@@ -106,13 +105,11 @@ function gooiBal() {
   joystatus.style.width = joy + "%"
   sleep = sleep - 1
   sleepingstatus.style.width = sleep + "%"
-
-  let audioBall = new Audio ("sounds/bouncing-ball.mp3")
+  h1element.textContent = "Ik vind het harstikke leuk om met de bal te spelen 🎾🎾"
   audioBall.play ()
 }
 
-//timer toevoegen aan de bar
-
+//timer toevoegen aan de bar, zodat deze afloopt
 setInterval (timer1, 1000) //activeert de function timer, het getal is in milliseconden
 
 function timer1 (){ //in deze functie gaat er steeds 1 vanaf gedurende de seconde
@@ -141,13 +138,13 @@ function colorChangeBar (){
     sleepingstatus.style.backgroundColor = 'red' 
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[4];
     h1element.textContent = "Noem je dit verzorgen!"
-  } else if (honger <= 65 || happy <= 65 || joy <= 65 || sleep <= 65){
+  } else if (honger <= 45 || happy <= 45 || joy <= 45 || sleep <= 45){
     hungerstatus.style.backgroundColor = 'orange'
     happystatus.style.backgroundColor = 'orange'
     joystatus.style.backgroundColor = 'orange'
     sleepingstatus.style.backgroundColor = 'orange'
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[1];
-    h1element.textContent = "OH ik trek het zo niet meer!"
+    h1element.textContent = "Let je wel op! Ik wil graag dat je mij verzorgt"
   } else if (honger || happy || joy || sleep == 5){
     stopTimer()
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];
@@ -166,7 +163,6 @@ hand.addEventListener ("click", geefAai)
 hondenMand.addEventListener ("click", gaSlapen)
 hondenVoer.addEventListener ("click", geefEten)
 tennisbal.addEventListener ("click", gooiBal)
-
 
 
 //  let audioEten = new Audio ("sounds/eating-sound-effect-36186.mp3") //Het ophalen van de audio uit je documenten
