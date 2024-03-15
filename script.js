@@ -6,9 +6,7 @@ const dier = "Hond"
 let h1element = document.querySelector("h1");
 
 //Regelen van hoe de hond eruit ziet, dmv. array
-const hondjeStatus = 0
 let plaatjeHondArray = ["hond1.jpeg", "hond-boos.jpeg", "hond-tong.jpeg", "hond-verbaasd.jpeg", "hond-verdrietig.jpeg"]; //de plaatjes neerzetten in de javascript
-statushond = 0 //dit is het begin dus de eerste hond
 
 //De buttons 
 const hondenVoer = document.querySelector(".hondenvoer");
@@ -29,10 +27,10 @@ let sleep = 100
 let happy = 100
 
 //Alle sounds op een rijtje
-let audioEat = new Audio ("sounds/eating-sound-effect-36186.mp3")
-let audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
-let audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
-let audioBall = new Audio ("sounds/bouncing-ball.mp3")
+const audioEat = new Audio ("sounds/eating-sound-effect-36186.mp3")
+const audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
+const audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
+const audioBall = new Audio ("sounds/bouncing-ball.mp3")
 
 function geefEten() { // maak een functie aan voor de hongerbalk
   honger = honger + 5 // dit zorgt ervoor dat er steeds 1 bij de honger komt
@@ -169,6 +167,7 @@ function colorChangeBar(){
     happystatus.style.backgroundColor = 'green'
     joystatus.style.backgroundColor = 'green'
     sleepingstatus.style.backgroundColor = 'green'
+    document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];
     console.log ("4 " + honger + " " + happy + " " + joy + " " + sleep)
   } 
 }
