@@ -91,6 +91,17 @@ function gooiBal() {
   audioBall.play ()
 }
 
+function addToAll(){ // een functie om bij alles eentje toe te voegen
+  honger = honger + 3
+  hungerstatus.style.width = honger + "%"
+  happy = happy + 3
+  happystatus.style.width = happy + "%"
+  joy = joy + 3
+  joystatus.style.width = joy + "%" 
+  sleep = sleep + 3
+  sleepingstatus.style.width = sleep + "%"
+}
+
 //timer toevoegen aan de bar, zodat deze afloopt, elke moet apart aangezet worden zodat ze apart lopen en stilgezet kunnen worden.
 let tmrEten = setInterval (timerEten, 500) //activeert de function timer, het getal is in milliseconden
 let tmrAai = setInterval (timerAai, 500)
@@ -177,3 +188,9 @@ hand.addEventListener ("click", geefAai)
 hondenMand.addEventListener ("click", gaSlapen)
 hondenVoer.addEventListener ("click", geefEten)
 tennisbal.addEventListener ("click", gooiBal)
+
+
+document.addEventListener ("keypress", (event) => {
+ if (event.key === " ") {
+  addToAll()
+}});
