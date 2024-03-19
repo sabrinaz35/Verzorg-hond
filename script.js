@@ -14,7 +14,6 @@ const hondenMand = document.querySelector(".hondenmand");
 const hand = document.querySelector(".hand");
 const tennisbal = document.querySelector(".tennisbal");
 
-
 //De progressbar
 let hungerstatus = document.querySelector(".hungerstatus"); //het toevoegen van mijn divs aan mijn javascript
 let joystatus = document.querySelector(".joystatus");
@@ -32,33 +31,29 @@ const audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
 const audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
 const audioBall = new Audio ("sounds/bouncing-ball.mp3")
 
-function geefEten() { // maak een functie aan voor de hongerbalk
-  honger = honger + 5 // dit zorgt ervoor dat er steeds 1 bij de honger komt
-  hungerstatus.style.width = honger + "%" //hiermee koppel je de div met de class aan het groeien van de balk
+function minOne (elem, value) { //een function om minder lijnen te hoeven schrijven in andere functies
+  value = value -1
+  elem.style.width = value + "%"
+  return value //het teruggeven van de aantallen aan de honger, joy, sleep en happy
+}
 
-  joy = joy - 1 //omdat je hem eten geeft wordt de rest minder om het terug te zien noteer je eerst de variabele en daarna pas wat je wilt doen
+function geefEten() { // maak een functie aan voor de hongerbalk
+  honger = honger + 5 // dit zorgt ervoor dat er steeds 5 bij de honger komt
+  hungerstatus.style.width = honger + "%" //hiermee koppel je de div met de class aan het groeien van de balk
+  joy = minOne(joystatus, joy) //Het aanroepen van de functie minOne bij de specifieke elementen
+  sleep = minOne(sleepingstatus, sleep)
+  happy = minOne(happystatus, happy)
   console.log(joystatus.style.width)
-  joystatus.style.width = joy + "%"
-  console.log (joystatus.style.width)
-  sleep = sleep - 1 
-  sleepingstatus.style.width = sleep + "%"
-  happy = happy - 1
-  happystatus.style.width = happy + "%"
- //Audio laten afspelen zodra er op de button geklikt word.
   h1element.textContent = "Wist je dat dit mijn favoriete eten is 🍖🍖"
-  audioEat.play ()
+  audioEat.play ()//Audio laten afspelen zodra er op de button geklikt word.
 }
 
 function geefAai() {
-  joy = joy + 5 //als ik op 5 zet gaat hij buiten de border hoe moet ik dit aanpassen? 
+  joy = joy + 5 
   joystatus.style.width = joy + "%"
-
-  honger = honger -1 
-  hungerstatus.style.width = honger + "%"
-  sleep = sleep - 1
-  sleepingstatus.style.width = sleep + "%"
-  happy= happy - 1
-  happystatus.style.width = happy + "%"
+  honger = minOne(hungerstatus, honger) 
+  sleep = minOne(sleepingstatus, sleep)
+  happy = minOne(happystatus, happy)
   h1element.textContent = "Ahh ik vind je zo lief als jij me aait ❤️❤️"
   audioAww.play ()
 }
@@ -66,13 +61,9 @@ function geefAai() {
 function gaSlapen() {
   sleep = sleep + 5
   sleepingstatus.style.width = sleep + "%"
-
-  honger = honger - 1 
-  hungerstatus.style.width = honger + "%"
-  joy = joy - 1
-  joystatus.style.width = joy + "%"
-  happy = happy - 1
-  happystatus.style.width = happy + "%"
+  honger = minOne(hungerstatus, honger) 
+  joy = minOne(joystatus, joy)
+  happy = minOne(happystatus, happy)
   h1element.textContent = "Het liefst slaap ik de hele dag  💤💤💤💤"
   audioSnurk.play ()
 }
@@ -80,13 +71,9 @@ function gaSlapen() {
 function gooiBal() {
   happy = happy + 5
   happystatus.style.width = happy + "%"
-  
-  honger = honger - 1 
-  hungerstatus.style.width = honger + "%"
-  joy = joy - 1
-  joystatus.style.width = joy + "%"
-  sleep = sleep - 1
-  sleepingstatus.style.width = sleep + "%"
+  honger = minOne(hungerstatus, honger) 
+  sleep = minOne(sleepingstatus, sleep)
+  joy = minOne(joystatus, joy)
   h1element.textContent = "Ik vind het harstikke leuk om met de bal te spelen 🎾🎾"
   audioBall.play ()
 }
@@ -113,8 +100,8 @@ function timerEten(){
   if (honger <= 5) {
     stopTimer (tmrEten)
   }
-  else {honger = honger -1 
-  hungerstatus.style.width = honger + "%"
+  else {
+    honger = minOne(hungerstatus, honger) 
  }
   colorChangeBar()
 }
@@ -123,8 +110,7 @@ function timerAai(){
   if (joy <= 5){
     stopTimer(tmrAai) 
   } else {
-  joy = joy -1
-  joystatus.style.width = joy+ "%"
+    joy = minOne(joystatus, joy) 
 }
   colorChangeBar()
 }
@@ -133,8 +119,7 @@ function timerSlapen(){
   if (sleep <= 5){
     stopTimer(tmrSlapen) 
   } else { 
-    sleep = sleep -1
-   sleepingstatus.style.width = sleep + "%" 
+    sleep = minOne(sleepingstatus, sleep) 
   }
   colorChangeBar()
 }
@@ -143,8 +128,7 @@ function timerBal(){
   if (happy <= 5 ){
     stopTimer(tmrBal) 
   } else {
-    happy = happy -1
-    happystatus.style.width = happy + "%"
+    happy = minOne(happystatus, happy) 
   }
   colorChangeBar()
 }
@@ -163,7 +147,7 @@ function colorChangeBar(){
     joystatus.style.backgroundColor = 'red' 
     sleepingstatus.style.backgroundColor = 'red' 
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[4];
-    h1element.textContent = "Noem je dit verzorgen!"
+    h1element.textContent = "Noem je dit verzorgen!" + " " + "Probeer eens op de spatiebalk te klikken"
     console.log ("1 " + honger + " " + happy + " " + joy + " " + sleep)
   } else if (honger <= 45 || happy <= 45 || joy <= 45 || sleep <= 45){
     hungerstatus.style.backgroundColor = 'orange'
@@ -173,7 +157,7 @@ function colorChangeBar(){
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[1];
     h1element.textContent = "Let je wel op! Ik wil graag dat je mij verzorgt"
     console.log ("2 " + honger + " " + happy + " " + joy + " " + sleep)
-  }  else { //Hij verandert nog niet terug naar groen... Als hij weer boven het getal komt.
+  }  else {
     hungerstatus.style.backgroundColor = 'green'
     happystatus.style.backgroundColor = 'green'
     joystatus.style.backgroundColor = 'green'
@@ -182,15 +166,12 @@ function colorChangeBar(){
     console.log ("4 " + honger + " " + happy + " " + joy + " " + sleep)
   } 
 }
-colorChangeBar()
 
 hand.addEventListener ("click", geefAai)
 hondenMand.addEventListener ("click", gaSlapen)
 hondenVoer.addEventListener ("click", geefEten)
 tennisbal.addEventListener ("click", gooiBal)
-
-
-document.addEventListener ("keypress", (event) => {
+document.addEventListener ("keypress", (event) => { //Hier word er een functie aangemaakt met daarin een event van de keyboard, wat lijd naar de functie addtoall
  if (event.key === " ") {
   addToAll()
 }});
