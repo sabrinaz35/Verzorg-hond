@@ -31,6 +31,9 @@ const audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
 const audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
 const audioBall = new Audio ("sounds/bouncing-ball.mp3")
 
+//Een gif voor als alle balken vol zijn
+const confetti = document.querySelector(".confetti")
+
 function minOne (elem, value) { //een function om minder lijnen te hoeven schrijven in andere functies
   value = value -1
   elem.style.width = value + "%"
@@ -38,6 +41,9 @@ function minOne (elem, value) { //een function om minder lijnen te hoeven schrij
 }
 
 function geefEten() { // maak een functie aan voor de hongerbalk
+  if (honger >= 100) { //Zodat het getal niet dramatisch boven de 100 komt
+    return
+  }
   honger = honger + 5 // dit zorgt ervoor dat er steeds 5 bij de honger komt
   hungerstatus.style.width = honger + "%" //hiermee koppel je de div met de class aan het groeien van de balk
   joy = minOne(joystatus, joy) //Het aanroepen van de functie minOne bij de specifieke elementen
@@ -49,6 +55,9 @@ function geefEten() { // maak een functie aan voor de hongerbalk
 }
 
 function geefAai() {
+  if (joy >= 100) {
+    return
+  }
   joy = joy + 5 
   joystatus.style.width = joy + "%"
   honger = minOne(hungerstatus, honger) 
@@ -59,6 +68,9 @@ function geefAai() {
 }
 
 function gaSlapen() {
+  if (sleep >= 100) {
+    return
+  }
   sleep = sleep + 5
   sleepingstatus.style.width = sleep + "%"
   honger = minOne(hungerstatus, honger) 
@@ -69,6 +81,9 @@ function gaSlapen() {
 }
 
 function gooiBal() {
+  if (happy >= 100) {
+    return
+  }
   happy = happy + 5
   happystatus.style.width = happy + "%"
   honger = minOne(hungerstatus, honger) 
@@ -149,6 +164,7 @@ function colorChangeBar(){
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[4];
     h1element.textContent = "Noem je dit verzorgen!" + " " + "Probeer eens op de spatiebalk te klikken"
     console.log ("1 " + honger + " " + happy + " " + joy + " " + sleep)
+    confetti.style.visibility = "hidden"
   } else if (honger <= 45 || happy <= 45 || joy <= 45 || sleep <= 45){
     hungerstatus.style.backgroundColor = 'orange'
     happystatus.style.backgroundColor = 'orange'
@@ -157,13 +173,18 @@ function colorChangeBar(){
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[1];
     h1element.textContent = "Let je wel op! Ik wil graag dat je mij verzorgt"
     console.log ("2 " + honger + " " + happy + " " + joy + " " + sleep)
-  }  else {
+    confetti.style.visibility = "hidden"
+  }  else if (honger >= 100 && happy >= 100 && joy >= 100 && sleep >= 100){
+    confetti.style.visibility = "visible"
+  }
+  else {
     hungerstatus.style.backgroundColor = 'green'
     happystatus.style.backgroundColor = 'green'
     joystatus.style.backgroundColor = 'green'
     sleepingstatus.style.backgroundColor = 'green'
     document.querySelector(".hond").src= 'images/'+plaatjeHondArray[0];
     console.log ("4 " + honger + " " + happy + " " + joy + " " + sleep)
+    confetti.style.visibility = "hidden"
   } 
 }
 

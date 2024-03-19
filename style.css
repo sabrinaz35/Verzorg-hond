@@ -9,6 +9,13 @@ body {
     background-image: url("images/background-binnen-bruin.jpeg");
 }
 
+.confetti {
+    width: 100vw; 
+    position: absolute;
+    visibility: hidden;
+    height: 100vh;
+}
+
 .progressbar {
     background-color: lightgray;
     padding: 5px;
