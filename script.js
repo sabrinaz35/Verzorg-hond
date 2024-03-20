@@ -41,8 +41,8 @@ function minOne (elem, value) { //een function om minder lijnen te hoeven schrij
 }
 
 function geefEten() { // maak een functie aan voor de hongerbalk
-  if (honger >= 100) { //Zodat het getal niet dramatisch boven de 100 komt
-    return
+  if (honger >= 100) { //Zodat het getal niet dramatisch boven de 100 komt PLus gebruik van >= Omdat hij met sommige knoppen wel boven de 100 komt en anders diet hij het niet
+    return // Deze heb ik van https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/return Zodat hij niet ver boven de 100 kan komen.
   }
   honger = honger + 5 // dit zorgt ervoor dat er steeds 5 bij de honger komt
   hungerstatus.style.width = honger + "%" //hiermee koppel je de div met de class aan het groeien van de balk
@@ -94,6 +94,18 @@ function gooiBal() {
 }
 
 function addToAll(){ // een functie om bij alles eentje toe te voegen
+  if (joy >= 100) {
+    return
+  }
+  if (happy >= 100) {
+    return
+  }
+  if (sleep >= 100) {
+    return
+  }
+  if (honger >= 100) {
+    return
+  }
   honger = honger + 3
   hungerstatus.style.width = honger + "%"
   happy = happy + 3
