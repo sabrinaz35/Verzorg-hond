@@ -177,7 +177,7 @@ function colorChangeBar(){
     h1element.textContent = "Noem je dit verzorgen!" + " " + "Probeer eens op de spatiebalk te klikken"
     console.log ("1 " + honger + " " + happy + " " + joy + " " + sleep)
     confetti.style.visibility = "hidden"
-  } else if (honger <= 45 || happy <= 45 || joy <= 45 || sleep <= 45){
+  } else if(honger <= 45 || happy <= 45 || joy <= 45 || sleep <= 45){
     hungerstatus.style.backgroundColor = 'orange'
     happystatus.style.backgroundColor = 'orange'
     joystatus.style.backgroundColor = 'orange'
@@ -189,7 +189,7 @@ function colorChangeBar(){
   }  else if (honger >= 100 && happy >= 100 && joy >= 100 && sleep >= 100){
     confetti.style.visibility = "visible"
   }
-  else {
+  else{
     hungerstatus.style.backgroundColor = 'green'
     happystatus.style.backgroundColor = 'green'
     joystatus.style.backgroundColor = 'green'
