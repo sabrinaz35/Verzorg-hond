@@ -1,5 +1,5 @@
-// De sounds die ik in dit document heb gebruikt komen van https://pixabay.com/ 
-//Emoji heb ik van https://emojipedia.org/nl/slaapsymbool 
+// De sounds en gifs die ik in dit document heb gebruikt komen van https://pixabay.com/ 
+// Emoji heb ik van https://emojipedia.org/nl/slaapsymbool 
 
 console.log("Dit is het spel Walking doggie");
 const dier = "Hond"
@@ -25,11 +25,12 @@ let joy = 100
 let sleep = 100
 let happy = 100
 
-//Alle sounds op een rijtje
+//Alle sounds op een rijtje deze code heb ik met behulp van https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio 
 const audioEat = new Audio ("sounds/eating-sound-effect-36186.mp3")
 const audioAww = new Audio ("sounds/aww-cute-reaction-6208.mp3")
 const audioSnurk = new Audio ("sounds/pug-roncando-95042.mp3")
 const audioBall = new Audio ("sounds/bouncing-ball.mp3")
+//-----
 
 //Een gif voor als alle balken vol zijn
 const confetti = document.querySelector(".confetti")
@@ -94,16 +95,16 @@ function gooiBal() {
 }
 
 function addToAll(){ // een functie om bij alles eentje toe te voegen
-  if (joy >= 100) {
+  if (joy >= 110) {
     return
   }
-  if (happy >= 100) {
+  if (happy >= 110) {
     return
   }
-  if (sleep >= 100) {
+  if (sleep >= 110) {
     return
   }
-  if (honger >= 100) {
+  if (honger >= 110) {
     return
   }
   honger = honger + 3
@@ -188,7 +189,7 @@ function colorChangeBar(){
     confetti.style.visibility = "hidden"
   }  else if (honger >= 100 && happy >= 100 && joy >= 100 && sleep >= 100){
     confetti.style.visibility = "visible"
-  }
+  } 
   else{
     hungerstatus.style.backgroundColor = 'green'
     happystatus.style.backgroundColor = 'green'
@@ -204,7 +205,10 @@ hand.addEventListener ("click", geefAai)
 hondenMand.addEventListener ("click", gaSlapen)
 hondenVoer.addEventListener ("click", geefEten)
 tennisbal.addEventListener ("click", gooiBal)
+
+// De keyevent aanspreken heb ik gedaan met behulp van Maja
 document.addEventListener ("keypress", (event) => { //Hier word er een functie aangemaakt met daarin een event van de keyboard, wat lijd naar de functie addtoall
  if (event.key === " ") {
   addToAll()
 }});
+//---- 
